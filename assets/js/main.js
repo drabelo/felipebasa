@@ -59,15 +59,44 @@
     bars.forEach(function(el){ el.style.width = (el.getAttribute('data-w')||0) + '%'; });
   }
 
-  /* ---------- lightbox ---------- */
+  /* ---------- lightbox with per-section groups, arrows, swipe, captions ---------- */
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = document.getElementById('lightboxImg');
   var lightboxClose = document.getElementById('lightboxClose');
-  var galleryImgs = document.querySelectorAll('.project-gallery img, .comp-card img, .art-images img');
+  var lightboxCaption = document.getElementById('lightboxCaption');
+  var lightboxPrev = document.getElementById('lightboxPrev');
+  var lightboxNext = document.getElementById('lightboxNext');
+  var galleryImgs = document.querySelectorAll('.project-gallery img, .comp-card img, .art-images img, .project-hero img');
 
-  function openLightbox(src, alt){
-    lightboxImg.src = src;
-    lightboxImg.alt = alt || '';
+  var groups = [];
+  galleryImgs.forEach(function(img){
+    var section = img.closest('article, section') || document.body;
+    var group = groups.find(function(g){ return g.section === section; });
+    if (!group){ group = { section: section, imgs: [] }; groups.push(group); }
+    img.dataset.group = groups.indexOf(group);
+    img.dataset.index = group.imgs.length;
+    group.imgs.push(img);
+  });
+
+  var current = { group: 0, index: 0 };
+
+  function show(groupIdx, index){
+    var imgs = groups[groupIdx].imgs;
+    index = (index + imgs.length) % imgs.length;
+    current = { group: groupIdx, index: index };
+    var img = imgs[index];
+    lightboxImg.src = img.currentSrc || img.src;
+    lightboxImg.alt = img.alt || '';
+    if (lightboxCaption){
+      lightboxCaption.textContent = img.alt || '';
+      lightboxCaption.style.display = img.alt ? '' : 'none';
+    }
+    var multiple = imgs.length > 1;
+    if (lightboxPrev) lightboxPrev.style.display = multiple ? '' : 'none';
+    if (lightboxNext) lightboxNext.style.display = multiple ? '' : 'none';
+  }
+  function openLightbox(groupIdx, index){
+    show(groupIdx, index);
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -75,18 +104,55 @@
     lightbox.classList.remove('open');
     document.body.style.overflow = '';
   }
+  function step(dir){ show(current.group, current.index + dir); }
+
   galleryImgs.forEach(function(img){
     img.addEventListener('click', function(){
-      openLightbox(img.src, img.alt);
+      openLightbox(+img.dataset.group, +img.dataset.index);
     });
   });
   lightboxClose.addEventListener('click', closeLightbox);
+  if (lightboxPrev) lightboxPrev.addEventListener('click', function(e){ e.stopPropagation(); step(-1); });
+  if (lightboxNext) lightboxNext.addEventListener('click', function(e){ e.stopPropagation(); step(1); });
   lightbox.addEventListener('click', function(e){
     if (e.target === lightbox) closeLightbox();
   });
   document.addEventListener('keydown', function(e){
+    if (!lightbox.classList.contains('open')) return;
     if (e.key === 'Escape') closeLightbox();
+    else if (e.key === 'ArrowLeft') step(-1);
+    else if (e.key === 'ArrowRight') step(1);
   });
+
+  var touchX = null;
+  lightbox.addEventListener('touchstart', function(e){
+    if (e.touches.length === 1) touchX = e.touches[0].clientX;
+  }, { passive: true });
+  lightbox.addEventListener('touchend', function(e){
+    if (touchX === null) return;
+    var dx = e.changedTouches[0].clientX - touchX;
+    touchX = null;
+    if (Math.abs(dx) > 48) step(dx > 0 ? -1 : 1);
+  }, { passive: true });
+
+  /* ---------- hero parallax + load moment ---------- */
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var heroBg = document.querySelector('.hero-bg');
+  if (heroBg && !reduceMotion){
+    document.body.classList.add('js-loaded');
+    var ticking = false;
+    var parallax = function(){
+      var y = window.scrollY;
+      if (y < window.innerHeight * 1.2){
+        heroBg.style.transform = 'translateY(' + (y * 0.28).toFixed(1) + 'px) scale(1.08)';
+      }
+      ticking = false;
+    };
+    document.addEventListener('scroll', function(){
+      if (!ticking){ requestAnimationFrame(parallax); ticking = true; }
+    }, { passive: true });
+    parallax();
+  }
 
   /* ---------- smooth-scroll offset for fixed nav on anchor click ---------- */
   document.querySelectorAll('a[href^="#"]').forEach(function(a){
