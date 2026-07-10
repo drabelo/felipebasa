@@ -6,6 +6,9 @@
 <title>Felipe Sousa — Arquiteto</title>
 <meta name="description" content="Portfólio de Felipe Sousa, arquiteto — projetos residenciais, comerciais e de interiores de alto padrão, concursos e produção artística.">
 <link rel="canonical" href="https://drabelo.github.io/felipebasa/">
+<link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/">
+<link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/">
+<link rel="alternate" hreflang="x-default" href="https://drabelo.github.io/felipebasa/">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Felipe Sousa — Arquiteto">
@@ -57,6 +60,7 @@
       <li><a href="#concursos">Concursos</a></li>
       <li><a href="#arte">Arte</a></li>
       <li><a href="#contato">Contato</a></li>
+      <li><a href="en/" class="lang-switch" lang="en" hreflang="en">EN</a></li>
     </ul>
   </nav>
   <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
@@ -519,7 +523,12 @@
 
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" id="lightboxClose" aria-label="Fechar">✕</button>
-  <img src="" alt="" id="lightboxImg">
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Imagem anterior">‹</button>
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Próxima imagem">›</button>
+  <figure class="lightbox-figure">
+    <img src="" alt="" id="lightboxImg">
+    <figcaption class="lightbox-caption" id="lightboxCaption"></figcaption>
+  </figure>
 </div>
 
 <script src="assets/js/main.js"></script>
