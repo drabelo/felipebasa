@@ -16,11 +16,13 @@
   toggle.addEventListener('click', function(){
     toggle.classList.toggle('active');
     links.classList.toggle('open');
+    nav.classList.toggle('menu-open');
   });
   links.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){
       toggle.classList.remove('active');
       links.classList.remove('open');
+      nav.classList.remove('menu-open');
     });
   });
 
