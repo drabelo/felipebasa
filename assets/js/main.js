@@ -135,23 +135,10 @@
     if (Math.abs(dx) > 48) step(dx > 0 ? -1 : 1);
   }, { passive: true });
 
-  /* ---------- hero parallax + load moment ---------- */
+  /* ---------- load moment ---------- */
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var heroBg = document.querySelector('.hero-bg');
-  if (heroBg && !reduceMotion){
+  if (!reduceMotion){
     document.body.classList.add('js-loaded');
-    var ticking = false;
-    var parallax = function(){
-      var y = window.scrollY;
-      if (y < window.innerHeight * 1.2){
-        heroBg.style.transform = 'translateY(' + (y * 0.28).toFixed(1) + 'px) scale(1.08)';
-      }
-      ticking = false;
-    };
-    document.addEventListener('scroll', function(){
-      if (!ticking){ requestAnimationFrame(parallax); ticking = true; }
-    }, { passive: true });
-    parallax();
   }
 
   /* ---------- smooth-scroll offset for fixed nav on anchor click ---------- */
