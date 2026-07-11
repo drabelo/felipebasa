@@ -2,7 +2,7 @@
    Felipe Sousa — Architecture Portfolio
    =================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap');
 
 :root{
   --ink:#1e2029;
@@ -17,9 +17,9 @@
   --gray:#6b6f7a;
   --cool:#eef1f5;
 
-  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Lora', serif;
-  --font-ui: 'Inter', sans-serif;
+  --font-ui: 'Space Grotesk', sans-serif;
 
   --container: 1240px;
   --pad: clamp(1.5rem, 5.5vw, 4rem);
@@ -44,6 +44,7 @@ body{
 }
 img{ max-width:100%; display:block; }
 a{ color:inherit; text-decoration:none; }
+b,strong{ font-weight:600; }
 h1,h2,h3,h4{ font-family:var(--font-display); font-weight:500; margin:0; line-height:1.1; letter-spacing:-0.02em; }
 p{ margin:0 0 1em; }
 .container{ max-width:var(--container); margin:0 auto; padding:0 var(--pad); }
@@ -174,7 +175,7 @@ p{ margin:0 0 1em; }
 .about-portrait .cap{
   margin-top:.9rem; font-family:var(--font-ui); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--gray);
 }
-.about-text p{ font-size:1.12rem; color:var(--ink-soft); }
+.about-text p{ font-size:1.12rem; color:var(--ink-soft); max-width:65ch; }
 .about-text p:first-of-type{ font-size:1.28rem; color:var(--ink); }
 .about-signature{
   margin-top:1.6rem; font-family:var(--font-display); font-weight:300; letter-spacing:.14em; font-size:1.25rem; color:var(--accent);
@@ -182,7 +183,7 @@ p{ margin:0 0 1em; }
 
 /* timeline */
 .timeline{ margin-top:4rem; display:grid; grid-template-columns:1fr 1fr; gap:3rem; }
-.timeline-col h3{ font-size:.75rem; font-family:var(--font-ui); letter-spacing:.16em; text-transform:uppercase; color:var(--tan-deep); margin-bottom:1.4rem; font-weight:700;}
+.timeline-col h3{ font-size:.75rem; font-family:var(--font-ui); letter-spacing:.16em; text-transform:uppercase; color:var(--tan-deep); margin-bottom:1.4rem; font-weight:600;}
 .timeline-item{ padding:1.1rem 0; border-top:1px solid var(--line); display:grid; grid-template-columns:5.2rem 1fr; gap:1rem; }
 .timeline-item:last-child{ border-bottom:1px solid var(--line); }
 .timeline-year{ font-family:var(--font-ui); font-size:.78rem; color:var(--gray); letter-spacing:.03em; padding-top:.15rem; }
@@ -199,7 +200,7 @@ p{ margin:0 0 1em; }
 .role-copy{ padding:clamp(2rem,4.5vw,3.5rem) clamp(1.75rem,4.5vw,3.5rem); }
 .role-copy .eyebrow{ color:var(--accent); }
 .role-copy h3{ font-size:clamp(1.5rem,3vw,2.1rem); color:var(--ink); margin-top:.6rem; margin-bottom:1.3rem; font-family:var(--font-display); font-weight:500; }
-.role-copy p{ font-size:.98rem; color:var(--ink-soft); margin-bottom:1em; }
+.role-copy p{ font-size:.98rem; color:var(--ink-soft); margin-bottom:1em; max-width:65ch; }
 .role-contact{
   margin-top:1.6rem; padding-top:1.4rem; border-top:1px solid #d9dde4;
   font-family:var(--font-ui); font-size:.78rem; color:var(--gray); line-height:1.9;
@@ -208,7 +209,7 @@ p{ margin:0 0 1em; }
 
 /* skills */
 .skills{ margin-top:5rem; display:grid; grid-template-columns:1.3fr 1fr; gap:clamp(2rem,6vw,4.5rem); }
-.skills h3{ font-size:.75rem; font-family:var(--font-ui); letter-spacing:.16em; text-transform:uppercase; color:var(--tan-deep); margin-bottom:1.6rem; font-weight:700;}
+.skills h3{ font-size:.75rem; font-family:var(--font-ui); letter-spacing:.16em; text-transform:uppercase; color:var(--tan-deep); margin-bottom:1.6rem; font-weight:600;}
 .bar-row{ display:grid; grid-template-columns:7rem 1fr; align-items:center; gap:1rem; margin-bottom:1.05rem; }
 .bar-row .label{ font-family:var(--font-ui); font-size:.78rem; letter-spacing:.04em; color:var(--ink); }
 .bar-track{ height:4px; background:var(--line); border-radius:2px; overflow:hidden; }
@@ -225,7 +226,7 @@ p{ margin:0 0 1em; }
   margin-bottom:2.6rem;
 }
 .project-index{ font-family:var(--font-display); font-weight:500; font-size:1.05rem; color:var(--accent); }
-.project-head h3{ font-size:clamp(2.2rem,5.4vw,4rem); }
+.project-head h3{ font-size:clamp(1.9rem,4vw,3rem); }
 .project-head h3 sup{ font-size:.4em; vertical-align:super; font-family:var(--font-ui); color:var(--gray); margin-left:.6rem; letter-spacing:.05em;}
 .project-tags{ display:flex; gap:.5rem; flex-wrap:wrap; justify-content:flex-end; }
 .tag{
@@ -253,7 +254,7 @@ p{ margin:0 0 1em; }
   display:grid; grid-template-columns:1.5fr 1fr; gap:clamp(2rem,5vw,4.5rem);
   margin-bottom:3rem;
 }
-.project-text p{ font-size:1.05rem; color:var(--ink-soft); }
+.project-text p{ font-size:1.05rem; color:var(--ink-soft); max-width:65ch; }
 .project-quote{
   border-left:2px solid var(--accent); padding-left:1.4rem;
   font-family:var(--font-body); font-style:italic; font-size:1.3rem; color:var(--ink);
@@ -298,7 +299,7 @@ p{ margin:0 0 1em; }
 
 /* =========================== ARTE =========================== */
 .art-grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(2rem,6vw,4.5rem); align-items:center; }
-.art-text p{ font-size:1.08rem; color:var(--ink-soft); }
+.art-text p{ font-size:1.08rem; color:var(--ink-soft); max-width:65ch; }
 .art-images{ display:grid; gap:1rem; }
 .art-images img{ border-radius:4px; cursor:zoom-in; width:100%; height:auto; box-shadow:0 18px 44px -24px rgba(30,32,41,.35); }
 .art-strip{ display:grid; grid-template-columns:1fr; gap:.6rem; }
