@@ -192,7 +192,29 @@ p{ margin:0 0 1em; }
 .project-nav a{ color:var(--ink-soft); transition:color .3s ease; }
 .project-nav a:hover{ color:var(--accent); }
 .project-nav .next{ text-align:right; }
+.project-nav .more{ text-align:center; }
+.project-nav .more b{ color:var(--accent); }
 .project-nav b{ display:block; font-size:.64rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--gray); margin-bottom:.25rem; }
+
+/* =========================== CASE-STUDY PAGES =========================== */
+.case-main{ padding-top:clamp(5rem,9vw,6.5rem); }
+.case-back{ margin:0 0 2.5rem; font-family:var(--font-ui); font-size:.8rem; font-weight:500; }
+.case-back a{ color:var(--gray); transition:color .3s ease; }
+.case-back a:hover{ color:var(--accent); }
+.case-title{ font-size:clamp(2.5rem,6vw,4.5rem); }
+.case-process{ margin-bottom:3rem; }
+.case-process-title{ font-size:clamp(1.75rem,3.6vw,2.5rem); margin:.5rem 0 2.5rem; }
+.project-gallery.one{ columns:1; max-width:56rem; }
+.case-process-gallery img{
+  border:1px solid var(--line); box-shadow:none; background:#fff;
+}
+.project-participation b{ display:block; font-size:.66rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--gray); margin-bottom:.5rem; }
+.case-footer{
+  border-top:1px solid var(--line); padding:2.5rem 0;
+  font-family:var(--font-ui); font-size:.8rem; color:var(--ink-soft);
+}
+.case-footer-inner{ display:flex; justify-content:space-between; gap:1.5rem; flex-wrap:wrap; }
+.case-footer a:hover{ color:var(--accent); }
 
 /* =========================== FOOTER EXTRAS =========================== */
 .footer-now{
