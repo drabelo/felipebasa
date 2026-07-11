@@ -13,6 +13,90 @@
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/"/>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://drabelo.github.io/felipebasa/projetos/mcentral-park/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/projetos/mcentral-park/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/projects/mcentral-park/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://drabelo.github.io/felipebasa/en/projects/mcentral-park/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/projetos/mcentral-park/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/projects/mcentral-park/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://drabelo.github.io/felipebasa/projetos/casa-noor/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/projetos/casa-noor/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/projects/casa-noor/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://drabelo.github.io/felipebasa/en/projects/casa-noor/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/projetos/casa-noor/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/projects/casa-noor/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://drabelo.github.io/felipebasa/projetos/estande-florata/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/projetos/estande-florata/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/projects/estande-florata/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://drabelo.github.io/felipebasa/en/projects/estande-florata/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/projetos/estande-florata/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/projects/estande-florata/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://drabelo.github.io/felipebasa/projetos/casa-lisa/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/projetos/casa-lisa/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/projects/casa-lisa/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://drabelo.github.io/felipebasa/en/projects/casa-lisa/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/projetos/casa-lisa/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/projects/casa-lisa/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://drabelo.github.io/felipebasa/projetos/casa-fs/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/projetos/casa-fs/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/projects/casa-fs/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://drabelo.github.io/felipebasa/en/projects/casa-fs/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/projetos/casa-fs/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/projects/casa-fs/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://drabelo.github.io/felipebasa/projetos/casa-vertice/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/projetos/casa-vertice/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/projects/casa-vertice/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://drabelo.github.io/felipebasa/en/projects/casa-vertice/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/projetos/casa-vertice/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/projects/casa-vertice/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
