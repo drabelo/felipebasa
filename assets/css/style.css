@@ -184,6 +184,42 @@ p{ margin:0 0 1em; }
 .work-index .idx-type{ font-size:.78rem; color:var(--gray); }
 .work-index .idx-status{ font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; text-align:right; color:var(--gray); }
 
+/* =========================== PROJECTS INDEX PAGE =========================== */
+.idx-toolbar{
+  display:flex; justify-content:space-between; align-items:center; gap:1.5rem; flex-wrap:wrap;
+  padding:1rem 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  margin-bottom:clamp(2.5rem,5vw,4rem);
+}
+.idx-chips, .idx-views{ display:flex; gap:.5rem; flex-wrap:wrap; align-items:center; }
+.chip{
+  font-family:var(--font-ui); font-size:.72rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+  background:none; border:1px solid var(--line); border-radius:99px; padding:.5rem 1rem;
+  color:var(--ink-soft); cursor:pointer; transition:all .25s ease;
+}
+.chip:hover{ border-color:var(--accent); color:var(--accent); }
+.chip.active{ background:var(--accent); border-color:var(--accent); color:#fff; }
+.idx-count{ font-family:var(--font-ui); font-size:.72rem; letter-spacing:.06em; color:var(--gray); margin-left:.5rem; }
+
+.idx-grid{ columns:2; column-gap:clamp(1.5rem,3vw,2.5rem); }
+.idxcard{ break-inside:avoid; margin-bottom:clamp(2rem,4vw,3.5rem); }
+.idxcard a{ display:block; }
+.idxcard-media img{
+  width:100%; height:auto; border-radius:4px;
+  box-shadow:0 14px 34px -20px rgba(30,32,41,.35);
+  transition:opacity .4s ease;
+}
+.idxcard a:hover .idxcard-media img{ opacity:.9; }
+.idxcard-info{ padding:1.5rem 0 .5rem; }
+.idxcard-line{
+  display:block; font-family:var(--font-ui); font-size:.72rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--gray); margin-bottom:.5rem;
+}
+.idxcard-info h2{ font-size:clamp(1.5rem,2.6vw,2rem); margin-bottom:.5rem; transition:color .3s ease; }
+.idxcard a:hover .idxcard-info h2{ color:var(--accent); }
+.idxcard-info p{ font-family:var(--font-body); font-size:.98rem; color:var(--ink-soft); max-width:48ch; margin-bottom:1rem; }
+.idx-list{ margin-bottom:0; }
+.idx-list > a[style*="none"]{ display:none; }
+
 /* =========================== PROJECT TEASER CARDS (home) =========================== */
 .project-card{ padding:clamp(2.5rem,6vw,4rem) 0; border-top:1px solid var(--line); }
 .project-card > a{
@@ -209,6 +245,8 @@ p{ margin:0 0 1em; }
   text-transform:uppercase; color:var(--accent);
 }
 .project-card > a:hover .project-card-cta{ text-decoration:underline; text-underline-offset:4px; }
+
+.section-cta{ margin-top:2rem; padding-top:2.5rem; border-top:1px solid var(--line); }
 
 /* =========================== PROJECT PREV/NEXT =========================== */
 .project-nav{
@@ -509,6 +547,8 @@ p{ margin:0 0 1em; }
   }
   .project-text p{ font-size:1rem; }
   .project-card > a{ grid-template-columns:1fr; gap:1.5rem; }
+  .idx-grid{ columns:1; }
+  .idx-toolbar{ flex-direction:column; align-items:flex-start; }
   .project-card:nth-of-type(even) .project-card-media{ order:0; }
   .work-index a{ grid-template-columns:2rem 1fr 3.5rem; }
   .work-index .idx-type, .work-index .idx-status{ display:none; }
