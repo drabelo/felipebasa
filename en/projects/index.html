@@ -50,17 +50,10 @@
     </div>
 
     <div class="idx-toolbar reveal is-visible">
-      <div class="idx-chips">
-        <button class="chip active" data-filter="todos">All</button>
-        <button class="chip" data-filter="residencial">Residential</button>
-        <button class="chip" data-filter="comercial">Commercial</button>
-        <button class="chip" data-filter="retrofit">Retrofit & Renovation</button>
-        <button class="chip" data-filter="construido">Built</button>
-      </div>
+      <span class="idx-count">06 projects</span>
       <div class="idx-views">
         <button class="chip view-btn active" data-view="grid">Grid</button>
         <button class="chip view-btn" data-view="list">List</button>
-        <span class="idx-count" id="idxCount">06 projects</span>
       </div>
     </div>
 
@@ -192,24 +185,6 @@
 <script src="../../assets/js/main.js"></script>
 <script>
 (function() {
-  var chips = document.querySelectorAll('.idx-chips .chip');
-  var cards = document.querySelectorAll('.idxcard, .idx-list > a');
-  var count = document.getElementById('idxCount');
-  var word = "projects";
-  chips.forEach(function(c) {
-    c.addEventListener('click', function() {
-      chips.forEach(function(x) { x.classList.remove('active'); });
-      c.classList.add('active');
-      var f = c.dataset.filter, n = 0;
-      cards.forEach(function(el) {
-        var show = f === 'todos' ||
-          (f === 'construido' ? el.dataset.built === '1' : el.dataset.cat === f);
-        el.style.display = show ? '' : 'none';
-        if (show && el.classList.contains('idxcard')) n++;
-      });
-      count.textContent = ('0' + n).slice(-2) + ' ' + word;
-    });
-  });
   var grid = document.getElementById('idxGrid');
   var list = document.getElementById('idxList');
   document.querySelectorAll('.view-btn').forEach(function(b) {

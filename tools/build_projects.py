@@ -419,7 +419,6 @@ IDX = dict(
    other_lang="EN",
    eyebrow="Trabalho selecionado · 2019 — 2026", h1="Projetos.",
    lede="Seis projetos, um mesmo olhar sobre materialidade, escala e luz — cada um com estudo completo, do croqui ao executivo.",
-   chips=[("todos","Todos"),("residencial","Residencial"),("comercial","Comercial"),("retrofit","Retrofit & Reforma"),("construido","Construídos")],
    views=("Grade","Lista"), cta="Estudo completo →", count_word="projetos",
    og_locale="pt_BR", menu="Abrir menu",
  ),
@@ -432,7 +431,6 @@ IDX = dict(
    other_lang="PT",
    eyebrow="Selected work · 2019 — 2026", h1="Projects.",
    lede="Six projects, one gaze on materiality, scale and light — each with a full case study, from sketch to construction set.",
-   chips=[("todos","All"),("residencial","Residential"),("comercial","Commercial"),("retrofit","Retrofit & Renovation"),("construido","Built")],
    views=("Grid","List"), cta="Full case study →", count_word="projects",
    og_locale="en_US", menu="Open menu",
  ),
@@ -476,9 +474,6 @@ def index_page(lang):
         <span class="idx-type">{typ}</span>
         <span class="idx-status">{d['status']}</span>
       </a>''')
-    chips = "\n".join(
-        f'        <button class="chip{" active" if k == "todos" else ""}" data-filter="{k}">{t}</button>'
-        for k, t in loc["chips"])
     cards_html = "\n".join(cards)
     rows_html = "\n".join(rows)
     g, l = loc["views"]
@@ -531,13 +526,10 @@ def index_page(lang):
     </div>
 
     <div class="idx-toolbar reveal is-visible">
-      <div class="idx-chips">
-{chips}
-      </div>
+      <span class="idx-count">06 {loc['count_word']}</span>
       <div class="idx-views">
         <button class="chip view-btn active" data-view="grid">{g}</button>
         <button class="chip view-btn" data-view="list">{l}</button>
-        <span class="idx-count" id="idxCount">06 {loc['count_word']}</span>
       </div>
     </div>
 
@@ -563,24 +555,6 @@ def index_page(lang):
 <script src="{rel}assets/js/main.js"></script>
 <script>
 (function() {{
-  var chips = document.querySelectorAll('.idx-chips .chip');
-  var cards = document.querySelectorAll('.idxcard, .idx-list > a');
-  var count = document.getElementById('idxCount');
-  var word = "{loc["count_word"]}";
-  chips.forEach(function(c) {{
-    c.addEventListener('click', function() {{
-      chips.forEach(function(x) {{ x.classList.remove('active'); }});
-      c.classList.add('active');
-      var f = c.dataset.filter, n = 0;
-      cards.forEach(function(el) {{
-        var show = f === 'todos' ||
-          (f === 'construido' ? el.dataset.built === '1' : el.dataset.cat === f);
-        el.style.display = show ? '' : 'none';
-        if (show && el.classList.contains('idxcard')) n++;
-      }});
-      count.textContent = ('0' + n).slice(-2) + ' ' + word;
-    }});
-  }});
   var grid = document.getElementById('idxGrid');
   var list = document.getElementById('idxList');
   document.querySelectorAll('.view-btn').forEach(function(b) {{
