@@ -233,7 +233,7 @@ L = dict(
  pt=dict(
    lang="pt-BR", dirname="projetos", rel="../../", home="../../",
    other_lang="EN", other_dirname="en/projects",
-   nav=[("#sobre","Sobre"),("#projetos","Projetos"),("#concursos","Concursos"),("#arte","Arte"),("#contato","Contato")],
+   nav=[("#sobre","Sobre"),("__INDEX__","Projetos"),("#concursos","Concursos"),("#arte","Arte"),("#contato","Contato")],
    title_suffix="Felipe Atelier", eyebrow_word="Projeto",
    process_eyebrow="Processo", process_title="Do croqui ao executivo.",
    participation_label="Participação no projeto",
@@ -245,7 +245,7 @@ L = dict(
  en=dict(
    lang="en", dirname="en/projects", rel="../../../", home="../../",
    other_lang="PT", other_dirname="projetos",
-   nav=[("#about","About"),("#projects","Projects"),("#competitions","Competitions"),("#art","Art"),("#contact","Contact")],
+   nav=[("#about","About"),("__INDEX__","Projects"),("#competitions","Competitions"),("#art","Art"),("#contact","Contact")],
    title_suffix="Felipe Atelier", eyebrow_word="Project",
    process_eyebrow="Process", process_title="From sketch to construction set.",
    participation_label="Role in the project",
@@ -271,7 +271,10 @@ def page(lang, i, p):
     prev_name = prev_p.get("en_name", prev_p["name"]) if lang == "en" else prev_p["name"]
     next_name = next_p.get("en_name", next_p["name"]) if lang == "en" else next_p["name"]
 
-    nav_links = "\n".join(f'      <li><a href="{loc["home"]}{h}">{t}</a></li>' for h, t in loc["nav"])
+    nav_links = "\n".join(
+        f'      <li><a href="../">{t}</a></li>' if h == "__INDEX__"
+        else f'      <li><a href="{loc["home"]}{h}">{t}</a></li>'
+        for h, t in loc["nav"])
     other_link = f"{rel}{loc['other_dirname']}/{p['slug']}/"
     meta_html = "\n".join(f'        <div><b>{k}</b><span>{v}</span></div>' for k, v in d["meta"])
     tags_html = "".join(f'<span class="tag">{t}</span>' for t in d["tags"])
@@ -330,7 +333,7 @@ def page(lang, i, p):
 <main class="case-main">
   <article class="project">
     <div class="container project-inner">
-      <p class="case-back"><a href="{loc['home']}#{p['slug']}">{loc['back']}</a></p>
+      <p class="case-back"><a href="../">{loc['back']}</a></p>
       <div class="project-head reveal is-visible">
         <div class="project-index">{n}</div>
         <h1 class="case-title">{name}</h1>
@@ -394,6 +397,207 @@ def page(lang, i, p):
 </html>
 """
 
+
+
+# ---------------------------------------------------------------- index pages
+CATS = {  # slug -> (category key, built?)
+  "mcentral-park":  ("retrofit", False),
+  "casa-noor":      ("residencial", True),
+  "estande-florata":("comercial", True),
+  "casa-lisa":      ("retrofit", False),
+  "casa-fs":        ("residencial", False),
+  "casa-vertice":   ("residencial", False),
+}
+
+IDX = dict(
+ pt=dict(
+   path="projetos/index.html", rel="../", home="../",
+   title="Projetos — Felipe Atelier",
+   desc="Todos os projetos de Felipe Sousa — residenciais, comerciais, retrofit e paisagismo, do croqui ao executivo.",
+   canonical="projetos/", other="en/projects/",
+   nav=[("#sobre","Sobre"),("","Projetos"),("#concursos","Concursos"),("#arte","Arte"),("#contato","Contato")],
+   other_lang="EN",
+   eyebrow="Trabalho selecionado · 2019 — 2026", h1="Projetos.",
+   lede="Seis projetos, um mesmo olhar sobre materialidade, escala e luz — cada um com estudo completo, do croqui ao executivo.",
+   chips=[("todos","Todos"),("residencial","Residencial"),("comercial","Comercial"),("retrofit","Retrofit & Reforma"),("construido","Construídos")],
+   views=("Grade","Lista"), cta="Estudo completo →", count_word="projetos",
+   og_locale="pt_BR", menu="Abrir menu",
+ ),
+ en=dict(
+   path="en/projects/index.html", rel="../../", home="../",
+   title="Projects — Felipe Atelier",
+   desc="All projects by Felipe Sousa — residential, commercial, retrofit and landscape, from sketch to construction set.",
+   canonical="en/projects/", other="projetos/",
+   nav=[("#about","About"),("","Projects"),("#competitions","Competitions"),("#art","Art"),("#contact","Contact")],
+   other_lang="PT",
+   eyebrow="Selected work · 2019 — 2026", h1="Projects.",
+   lede="Six projects, one gaze on materiality, scale and light — each with a full case study, from sketch to construction set.",
+   chips=[("todos","All"),("residencial","Residential"),("comercial","Commercial"),("retrofit","Retrofit & Renovation"),("construido","Built")],
+   views=("Grid","List"), cta="Full case study →", count_word="projects",
+   og_locale="en_US", menu="Open menu",
+ ),
+)
+
+def index_page(lang):
+    loc = IDX[lang]
+    rel = loc["rel"]
+    url = f"{SITE}/{loc['canonical']}"
+    pt_url = f"{SITE}/projetos/"
+    en_url = f"{SITE}/en/projects/"
+    nav_links = "\n".join(
+        f'      <li><a aria-current="page" href="./">{t}</a></li>' if h == ""
+        else f'      <li><a href="{loc["home"]}{h}">{t}</a></li>'
+        for h, t in loc["nav"])
+    other_link = f"{rel}{loc['other']}"
+
+    cards, rows = [], []
+    for i, p in enumerate(PROJECTS):
+        d = p[lang]
+        name = p.get("en_name", p["name"]) if lang == "en" else p["name"]
+        n = f"{i+1:02d}"
+        cat, built = CATS[p["slug"]]
+        typ = d["meta"][1][1]
+        data = f'data-cat="{cat}" data-built="{"1" if built else "0"}"'
+        cards.append(f'''      <article class="idxcard" {data}>
+        <a href="{p['slug']}/">
+          <div class="idxcard-media">{img_tag(p['hero'], d['hero_alt'], rel)}</div>
+          <div class="idxcard-info">
+            <span class="idxcard-line"><span class="idx-n">{n}</span> · {p['year']} · {d['status']}</span>
+            <h2>{name}</h2>
+            <p>{d['desc']}</p>
+            <span class="project-card-cta">{loc['cta']}</span>
+          </div>
+        </a>
+      </article>''')
+        rows.append(f'''      <a href="{p['slug']}/" {data}>
+        <span class="idx-n">{n}</span>
+        <span class="idx-name">{name}</span>
+        <span class="idx-year">{p['year']}</span>
+        <span class="idx-type">{typ}</span>
+        <span class="idx-status">{d['status']}</span>
+      </a>''')
+    chips = "\n".join(
+        f'        <button class="chip{" active" if k == "todos" else ""}" data-filter="{k}">{t}</button>'
+        for k, t in loc["chips"])
+    cards_html = "\n".join(cards)
+    rows_html = "\n".join(rows)
+    g, l = loc["views"]
+
+    return f'''<!doctype html>
+<html lang="{"pt-BR" if lang == "pt" else "en"}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{loc['title']}</title>
+<meta name="description" content="{loc['desc']}">
+<link rel="canonical" href="{url}">
+<link rel="alternate" hreflang="pt-BR" href="{pt_url}">
+<link rel="alternate" hreflang="en" href="{en_url}">
+<link rel="alternate" hreflang="x-default" href="{pt_url}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{loc['title']}">
+<meta property="og:description" content="{loc['desc']}">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="{SITE}/assets/img/og-image.jpg">
+<meta property="og:locale" content="{loc['og_locale']}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" type="image/svg+xml" href="{rel}assets/img/favicon.svg">
+<link rel="apple-touch-icon" href="{rel}assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="{rel}assets/css/style.css">
+</head>
+<body>
+
+<header class="site-nav scrolled" id="siteNav">
+  <a href="{loc['home']}" class="nav-logo"><img src="{rel}assets/img/logo-nav.png" srcset="{rel}assets/img/logo-nav@2x.png 2x" alt="felipe · atelier" width="175" height="44"></a>
+  <nav>
+    <ul class="nav-links" id="navLinks">
+{nav_links}
+      <li><a href="{other_link}" class="lang-switch">{loc['other_lang']}</a></li>
+    </ul>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="{loc['menu']}">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main class="case-main">
+  <div class="container">
+    <div class="section-head reveal is-visible">
+      <div class="eyebrow">{loc['eyebrow']}</div>
+      <h1 class="case-title">{loc['h1']}</h1>
+      <p class="lede">{loc['lede']}</p>
+    </div>
+
+    <div class="idx-toolbar reveal is-visible">
+      <div class="idx-chips">
+{chips}
+      </div>
+      <div class="idx-views">
+        <button class="chip view-btn active" data-view="grid">{g}</button>
+        <button class="chip view-btn" data-view="list">{l}</button>
+        <span class="idx-count" id="idxCount">06 {loc['count_word']}</span>
+      </div>
+    </div>
+
+    <div class="idx-grid" id="idxGrid">
+{cards_html}
+    </div>
+
+    <div class="work-index idx-list" id="idxList" hidden>
+{rows_html}
+    </div>
+  </div>
+</main>
+
+<footer class="case-footer">
+  <div class="container">
+    <div class="case-footer-inner">
+      <span>{L[lang]['contact_line']}</span>
+      <span class="colophon">{L[lang]['footer_note']}</span>
+    </div>
+  </div>
+</footer>
+
+<script src="{rel}assets/js/main.js"></script>
+<script>
+(function() {{
+  var chips = document.querySelectorAll('.idx-chips .chip');
+  var cards = document.querySelectorAll('.idxcard, .idx-list > a');
+  var count = document.getElementById('idxCount');
+  var word = "{loc["count_word"]}";
+  chips.forEach(function(c) {{
+    c.addEventListener('click', function() {{
+      chips.forEach(function(x) {{ x.classList.remove('active'); }});
+      c.classList.add('active');
+      var f = c.dataset.filter, n = 0;
+      cards.forEach(function(el) {{
+        var show = f === 'todos' ||
+          (f === 'construido' ? el.dataset.built === '1' : el.dataset.cat === f);
+        el.style.display = show ? '' : 'none';
+        if (show && el.classList.contains('idxcard')) n++;
+      }});
+      count.textContent = ('0' + n).slice(-2) + ' ' + word;
+    }});
+  }});
+  var grid = document.getElementById('idxGrid');
+  var list = document.getElementById('idxList');
+  document.querySelectorAll('.view-btn').forEach(function(b) {{
+    b.addEventListener('click', function() {{
+      document.querySelectorAll('.view-btn').forEach(function(x) {{ x.classList.remove('active'); }});
+      b.classList.add('active');
+      var isGrid = b.dataset.view === 'grid';
+      grid.hidden = !isGrid;
+      list.hidden = isGrid;
+    }});
+  }});
+}})();
+</script>
+</body>
+</html>
+'''
+
 def main():
     for lang in ("pt", "en"):
         for i, p in enumerate(PROJECTS):
@@ -402,6 +606,12 @@ def main():
             with open(os.path.join(out_dir, "index.html"), "w") as f:
                 f.write(page(lang, i, p))
             print("wrote", out_dir)
+    for lang in ("pt", "en"):
+        path = IDX[lang]["path"]
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w") as f:
+            f.write(index_page(lang))
+        print("wrote", path)
 
 if __name__ == "__main__":
     main()
