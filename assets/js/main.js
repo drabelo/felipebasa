@@ -66,7 +66,7 @@
   var lightboxCaption = document.getElementById('lightboxCaption');
   var lightboxPrev = document.getElementById('lightboxPrev');
   var lightboxNext = document.getElementById('lightboxNext');
-  var galleryImgs = document.querySelectorAll('.project-gallery img, .comp-card img, .art-images img, .project-hero img');
+  var galleryImgs = document.querySelectorAll('.project-gallery img, .comp-card img, .art-images img, .project-hero img, .art-plate img');
 
   var groups = [];
   galleryImgs.forEach(function(img){
