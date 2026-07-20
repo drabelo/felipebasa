@@ -16,6 +16,34 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://drabelo.github.io/felipebasa/sobre/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/sobre/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/about/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://drabelo.github.io/felipebasa/en/about/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/sobre/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/about/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://drabelo.github.io/felipebasa/arte/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/arte/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/art/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://drabelo.github.io/felipebasa/en/art/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/arte/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/art/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://drabelo.github.io/felipebasa/projetos/mcentral-park/</loc>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/projetos/mcentral-park/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/projects/mcentral-park/"/>
