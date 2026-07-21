@@ -135,6 +135,14 @@
     if (Math.abs(dx) > 48) step(dx > 0 ? -1 : 1);
   }, { passive: true });
 
+  /* ---------- image protection: block context menu / drag on artwork ---------- */
+  document.addEventListener('contextmenu', function(e){
+    if (e.target.closest('img, .lightbox')) e.preventDefault();
+  });
+  document.addEventListener('dragstart', function(e){
+    if (e.target.closest('img')) e.preventDefault();
+  });
+
   /* ---------- load moment ---------- */
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!reduceMotion){

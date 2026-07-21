@@ -42,7 +42,8 @@ body{
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
-img{ max-width:100%; display:block; }
+/* images never stretch: height follows the intrinsic ratio, everywhere */
+img{ max-width:100%; height:auto; display:block; -webkit-user-drag:none; user-select:none; }
 a{ color:inherit; text-decoration:none; }
 b,strong{ font-weight:600; }
 h1,h2,h3,h4{ font-family:var(--font-display); font-weight:500; margin:0; line-height:1.1; letter-spacing:-0.02em; }
@@ -181,31 +182,34 @@ p{ margin:0 0 1em; }
 /* full-page plate — an image treated as a book plate on white */
 .plate{ padding:clamp(4.5rem,10vw,8rem) 0; border-bottom:1px solid var(--line); }
 .plate a{ display:block; }
-.plate img{ display:block; margin:0 auto; width:auto; max-width:min(880px,100%); max-height:86vh; height:auto; }
+.plate img{ display:block; margin:0 auto; width:100%; max-width:960px; height:auto; }
 .plate-cap{
   margin-top:1.75rem; text-align:center;
   font-family:var(--font-ui); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gray);
 }
-.plate-cap em{ font-style:normal; color:var(--accent); }
-.plate a:hover .plate-cap em{ text-decoration:underline; text-underline-offset:4px; }
+.plate-cap em{ font-style:normal; font-weight:600; color:var(--accent); }
 
-/* appendix plates — catalogued artworks with book captions */
+/* appendix plates — catalogued artworks with book captions.
+   generous voids between works: the emptiness is part of the reading */
 .art-plates{
   display:grid; grid-template-columns:1fr 1fr;
-  gap:clamp(3.5rem,8vw,6rem) clamp(2rem,5vw,4rem);
-  margin-top:clamp(2.5rem,6vw,4rem);
+  gap:clamp(6rem,14vw,11rem) clamp(3rem,7vw,6rem);
+  margin-top:clamp(4rem,10vw,7rem);
 }
 .art-plate{ margin:0; }
 .art-plate img{ width:100%; height:auto; cursor:zoom-in; }
 .art-plate.wide{ grid-column:1 / -1; }
 .art-plate.wide img{ max-width:56rem; margin:0 auto; display:block; }
 .art-plate figcaption{
-  margin-top:1.1rem; font-family:var(--font-ui); font-size:.74rem; line-height:1.85;
-  color:var(--gray); letter-spacing:.03em; border-top:1px solid var(--line); padding-top:.75rem;
+  margin-top:1.2rem; font-family:var(--font-ui); font-size:.74rem; line-height:1.85;
+  color:var(--gray); letter-spacing:.03em;
 }
 .art-plate figcaption b{
   display:block; color:var(--ink); font-size:.8rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.2rem;
 }
+/* stacked closing blocks on the art page — one thing at a time, room to breathe */
+.art-closing > div{ max-width:38rem; }
+.art-closing > div + div{ margin-top:clamp(6rem,14vw,10rem); }
 
 /* =========================== WORK INDEX (register) =========================== */
 .work-index{ margin-bottom:clamp(3rem,7vw,5rem); font-family:var(--font-ui); }
@@ -257,7 +261,7 @@ p{ margin:0 0 1em; }
 .idx-list > a[style*="none"]{ display:none; }
 
 /* =========================== PROJECT TEASER CARDS (home) =========================== */
-.project-card{ padding:clamp(2.5rem,6vw,4rem) 0; border-top:1px solid var(--line); }
+.project-card{ padding:clamp(3rem,8vw,6rem) 0; }
 .project-card > a{
   display:grid; grid-template-columns:7fr 5fr; gap:clamp(2rem,4.5vw,4rem); align-items:center;
 }
@@ -277,7 +281,13 @@ p{ margin:0 0 1em; }
 }
 .project-card > a:hover .project-card-cta{ text-decoration:underline; text-underline-offset:4px; }
 
-.section-cta{ margin-top:2rem; padding-top:2.5rem; border-top:1px solid var(--line); }
+.section-cta{ margin-top:2rem; padding-top:1rem; }
+.btn-text{
+  display:inline-block; font-family:var(--font-ui); font-size:.82rem; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--accent);
+  transition:color .3s ease;
+}
+.btn-text:hover{ color:var(--accent-deep); }
 
 /* =========================== PROJECT PREV/NEXT =========================== */
 .project-nav{
@@ -463,18 +473,20 @@ p{ margin:0 0 1em; }
   border-top:1px solid var(--line);
 }
 .footer .eyebrow{ color:var(--accent); }
-.footer h2{ color:var(--ink); font-size:clamp(2.3rem,7vw,5rem); margin-top:.8rem; max-width:22ch; }
+.footer h2{ color:var(--ink); font-size:clamp(1.6rem,3.4vw,2.4rem); margin-top:.8rem; max-width:22ch; }
 .footer h2 em{ color:var(--accent); font-style:normal; }
-.footer-cta{ margin-top:2.5rem; display:flex; gap:1rem; flex-wrap:wrap; }
+.footer-cta{ margin-top:2.5rem; display:flex; gap:2.5rem; flex-wrap:wrap; }
+/* minimalist actions: bold text only, no boxes */
 .btn{
-  display:inline-block; font-family:var(--font-ui); font-size:.78rem; font-weight:600;
-  letter-spacing:.09em; text-transform:uppercase; padding:1rem 1.7rem;
-  transition:background .3s ease, border-color .3s ease, color .3s ease;
+  display:inline-block; font-family:var(--font-ui); font-size:.82rem; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; padding:0;
+  background:none; border:none;
+  transition:color .3s ease;
 }
-.btn-solid{ background:var(--accent); color:#fff; }
-.btn-solid:hover{ background:var(--accent-deep); }
-.btn-ghost{ border:1px solid var(--ink); color:var(--ink); }
-.btn-ghost:hover{ border-color:var(--accent); color:var(--accent); }
+.btn-solid{ color:var(--accent); }
+.btn-solid:hover{ color:var(--accent-deep); }
+.btn-ghost{ color:var(--ink); }
+.btn-ghost:hover{ color:var(--accent); }
 .footer-grid{ margin-top:3.5rem; display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; padding-top:2.5rem; border-top:1px solid #d9dde4; }
 .footer-col b{ display:block; font-family:var(--font-ui); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gray); margin-bottom:.75rem; }
 .footer-col a, .footer-col span{ display:block; font-family:var(--font-ui); font-size:.92rem; color:var(--ink); margin-bottom:.5rem; }
