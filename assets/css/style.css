@@ -208,8 +208,8 @@ p{ margin:0 0 1em; }
 /* stacked closing blocks on the art page — one thing at a time, room to breathe */
 .art-closing > div{ max-width:38rem; }
 .art-closing > div + div{ margin-top:clamp(6rem,14vw,10rem); }
-/* relocated statement — a quiet line of breath after the plates */
-.art-statement{ margin:clamp(6rem,14vw,10rem) auto clamp(1rem,3vw,2rem); max-width:32ch; }
+/* relocated statement — a quiet line of breath after the plates, held to the right */
+.art-statement{ margin:clamp(6rem,14vw,10rem) 0 clamp(1rem,3vw,2rem) auto; max-width:34ch; text-align:right; }
 .art-statement p{
   font-family:var(--font-body); font-style:italic;
   font-size:clamp(1.4rem,3vw,2.1rem); line-height:1.4; color:var(--ink); margin:0;
