@@ -156,6 +156,20 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://drabelo.github.io/felipebasa/projetos/casa-tau/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/projetos/casa-tau/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/projects/casa-tau/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://drabelo.github.io/felipebasa/en/projects/casa-tau/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/projetos/casa-tau/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/projects/casa-tau/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://drabelo.github.io/felipebasa/projetos/</loc>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://drabelo.github.io/felipebasa/projetos/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://drabelo.github.io/felipebasa/en/projects/"/>

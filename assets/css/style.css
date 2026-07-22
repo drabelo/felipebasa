@@ -136,7 +136,7 @@ p{ margin:0 0 1em; }
 @media (prefers-reduced-motion: reduce){
   .js-loaded .hero-eyebrow, .js-loaded .hero-logo, .js-loaded .hero-meta{ animation:none; }
 }
-.hero-content{ position:relative; z-index:2; width:100%; padding:0 var(--pad) 5rem; }
+.hero-content{ position:relative; z-index:2; width:100%; padding:0 var(--pad) 3rem; }
 .hero-eyebrow{ font-family:var(--font-ui); font-size:.75rem; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin-top:1.6rem; }
 .hero-logo{ display:block; width:min(680px, 86vw); height:auto; }
 .hero-meta{
@@ -335,14 +335,22 @@ p{ margin:0 0 1em; }
   min-height:70vh; display:flex; align-items:center;
   padding:clamp(8rem,18vw,13rem) 0 clamp(4rem,10vw,7rem);
 }
-.contact-lead{ max-width:30ch; }
+/* lead: title on the left, invitation text on the right */
+.contact-lead-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:2rem clamp(3rem,8vw,7rem);
+  align-items:start; margin-top:.9rem;
+}
 .contact-lead h1{
-  font-size:clamp(2.6rem,7vw,5rem); margin:.9rem 0 1.8rem; letter-spacing:-0.02em;
+  font-size:clamp(1.8rem,3.6vw,2.6rem); margin:0; letter-spacing:-0.02em;
 }
 .contact-lead h1 em{ font-style:normal; color:var(--accent); }
 .contact-lead p{
   font-family:var(--font-body); font-size:1.18rem; color:var(--ink-soft);
-  max-width:34ch; line-height:1.7;
+  max-width:38ch; line-height:1.7; justify-self:end; margin:0;
+}
+@media (max-width: 720px){
+  .contact-lead-grid{ grid-template-columns:1fr; }
+  .contact-lead p{ justify-self:start; }
 }
 .contact-links{ margin-top:clamp(3.5rem,8vw,6rem); }
 .contact-primary{
@@ -616,7 +624,7 @@ p{ margin:0 0 1em; }
   .nav-toggle.active span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
 
   .hero{ min-height:460px; height:80svh; }
-  .hero-content{ padding-bottom:5rem; }
+  .hero-content{ padding-bottom:3rem; }
   .hero-meta{ gap:1rem 2rem; margin-top:2rem; }
   .scroll-cue{ display:none; }
 
