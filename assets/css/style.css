@@ -321,6 +321,7 @@ p{ margin:0 0 1em; }
 .case-process-gallery img{
   border:1px solid var(--line); box-shadow:none; background:#fff;
 }
+.case-process-gallery.no-frame img{ border:none; }
 .project-participation b{ display:block; font-size:.66rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--gray); margin-bottom:.5rem; }
 .case-footer{
   padding:2.5rem 0;
