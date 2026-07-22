@@ -451,11 +451,13 @@ p{ margin:0 0 1em; }
 .project-index{ font-family:var(--font-display); font-weight:500; font-size:1.05rem; color:var(--accent); }
 .project-head h3{ font-size:clamp(1.9rem,4vw,3rem); }
 .project-head h3 sup{ font-size:.4em; vertical-align:super; font-family:var(--font-ui); color:var(--gray); margin-left:.6rem; letter-spacing:.05em;}
-.project-tags{ display:flex; gap:.5rem; flex-wrap:wrap; justify-content:flex-end; }
+.project-tags{ display:flex; gap:.7rem; flex-wrap:wrap; justify-content:flex-end; align-items:baseline; }
+/* categories as plain text — no box */
 .tag{
   font-family:var(--font-ui); font-size:.66rem; letter-spacing:.08em; text-transform:uppercase;
-  border:1px solid var(--line); padding:.35rem .7rem; color:var(--ink-soft); white-space:nowrap;
+  color:var(--gray); white-space:nowrap;
 }
+.tag:not(:last-child)::after{ content:"·"; margin-left:.7rem; color:var(--gray); }
 .project-meta{
   display:grid; grid-template-columns:repeat(auto-fit, minmax(9.5rem, 1fr)); gap:.5rem 2rem;
   padding:1rem 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
